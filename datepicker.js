@@ -36,7 +36,7 @@ class DatePicker extends Component {
     };
 
     if (props.locale) {
-      Moment.locale(props.locale)
+      Moment.locale(props.locale);
     }
 
     this.getDate = this.getDate.bind(this);
