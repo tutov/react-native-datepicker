@@ -35,6 +35,10 @@ class DatePicker extends Component {
       allowPointerEvents: true
     };
 
+    if (props.locale) {
+      Moment.locale(props.locale)
+    }
+
     this.getDate = this.getDate.bind(this);
     this.getDateStr = this.getDateStr.bind(this);
     this.datePicked = this.datePicked.bind(this);
