@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import Style from './style';
 import Moment from 'moment';
+import 'moment/min/locales';
 
 const FORMATS = {
   'date': 'YYYY-MM-DD',
