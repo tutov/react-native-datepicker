@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   DatePickerAndroid,
   Animated,
+  useColorScheme,
   Keyboard
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -270,6 +271,8 @@ class DatePicker extends Component {
       locale
     } = this.props;
 
+    const isDarkMode = useColorScheme() === 'dark';
+
     const dateInputStyle = [
       Style.dateInput, customStyles.dateInput,
       disabled && Style.disabled,
@@ -301,7 +304,7 @@ class DatePicker extends Component {
             onRequestClose={() => {this.setModalVisible(false);}}
           >
             <View
-              style={{flex: 1}}
+              style={{flex: 1, bg: isDarkMode ? 'rgba(50, 53, 57, 1)' : 'white'} }
             >
               <TouchableComponent
                 style={Style.datePickerMask}
