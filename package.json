@@ -1,6 +1,6 @@
 {
   "name": "react-native-datepicker",
-  "version": "1.7.2",
+  "version": "1.8.0",
   "description": "React Native DatePicker component for both Android and iOS, useing DatePickerAndroid, TimePickerAndroid and DatePickerIOS",
   "main": "datepicker.js",
   "scripts": {
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/xgfe/react-native-datepicker#readme",
   "dependencies": {
+    "@react-native-community/datetimepicker": "2.4.3",
     "moment": "^2.22.0"
   },
   "devDependencies": {
