@@ -320,6 +320,7 @@ class DatePicker extends Component {
                     <View pointerEvents={this.state.allowPointerEvents ? 'auto' : 'none'}>
                       <DateTimePicker
                         value={this.state.date}
+                        is24Hour={true}
                         mode={mode}
                         minimumDate={minDate && this.getDate(minDate)}
                         maximumDate={maxDate && this.getDate(maxDate)}
