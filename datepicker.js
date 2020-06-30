@@ -294,7 +294,7 @@ class DatePicker extends Component {
               <View/>
           }
           {this._renderIcon()}
-          {Platform.OS === 'ios' && (<Modal
+          {Platform.OS === 'ios' ? (<Modal
             transparent={true}
             animationType="none"
             visible={this.state.modalVisible}
@@ -360,7 +360,18 @@ class DatePicker extends Component {
                 </TouchableComponent>
               </TouchableComponent>
             </View>
-          </Modal>)}
+          </Modal>) : <DateTimePicker
+            value={this.state.date}
+            is24Hour={true}
+            mode={mode}
+            minimumDate={minDate && this.getDate(minDate)}
+            maximumDate={maxDate && this.getDate(maxDate)}
+            onChange={this.onDateChange}
+            minuteInterval={minuteInterval}
+            timeZoneOffsetInMinutes={timeZoneOffsetInMinutes ? timeZoneOffsetInMinutes : null}
+            style={[Style.datePicker, customStyles.datePicker]}
+            locale={locale}
+          />}
         </View>
       </TouchableComponent>
     );
