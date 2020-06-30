@@ -184,7 +184,7 @@ class DatePicker extends Component {
     );
   }
 
-  onDateChange(date) {
+  onDateChange(e, date) {
     this.setState({
       allowPointerEvents: false,
       date: date
