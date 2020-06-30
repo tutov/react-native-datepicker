@@ -186,16 +186,25 @@ class DatePicker extends Component {
   }
 
   onDateChange(e, date) {
-    this.setState({
-      allowPointerEvents: false,
-      date: date
-    });
-    const timeoutId = setTimeout(() => {
-      this.setState({
-        allowPointerEvents: true
-      });
-      clearTimeout(timeoutId);
-    }, 200);
+    if (date) {
+
+      if (Platform.OS === 'ios') {
+        this.setState({
+          allowPointerEvents: false,
+          date: date
+        });
+        const timeoutId = setTimeout(() => {
+          this.setState({
+            allowPointerEvents: true
+          });
+          clearTimeout(timeoutId);
+        }, 200);
+      } else {
+        this.setState({date, modalVisible: false}, this.onPressConfirm);
+      }
+    }
+
+    if (Platform.OS !== 'ios') {this.setState({modalVisible: false});}
   }
 
   onDatetimeTimePicked(year, month, day, {action, hour, minute}) {
@@ -290,11 +299,11 @@ class DatePicker extends Component {
               <View style={dateInputStyle}>
                 {this.getTitleElement()}
               </View>
-            :
+              :
               <View/>
           }
           {this._renderIcon()}
-          {Platform.OS === 'ios' ? (<Modal
+          {Platform.OS === 'ios' && (<Modal
             transparent={true}
             animationType="none"
             visible={this.state.modalVisible}
@@ -320,7 +329,6 @@ class DatePicker extends Component {
                     <View pointerEvents={this.state.allowPointerEvents ? 'auto' : 'none'}>
                       <DateTimePicker
                         value={this.state.date}
-                        is24Hour={true}
                         mode={mode}
                         minimumDate={minDate && this.getDate(minDate)}
                         maximumDate={maxDate && this.getDate(maxDate)}
@@ -360,9 +368,9 @@ class DatePicker extends Component {
                 </TouchableComponent>
               </TouchableComponent>
             </View>
-          </Modal>) : <DateTimePicker
+          </Modal>)}
+          {Boolean(Platform.OS !== 'ios' && this.state.modalVisible) && <DateTimePicker
             value={this.state.date}
-            is24Hour={true}
             mode={mode}
             minimumDate={minDate && this.getDate(minDate)}
             maximumDate={maxDate && this.getDate(maxDate)}
