@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   DatePickerAndroid,
   Animated,
+  Platform,
   Keyboard
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -293,7 +294,7 @@ class DatePicker extends Component {
               <View/>
           }
           {this._renderIcon()}
-          <Modal
+          {Platform.OS === 'ios' && (<Modal
             transparent={true}
             animationType="none"
             visible={this.state.modalVisible}
@@ -358,7 +359,7 @@ class DatePicker extends Component {
                 </TouchableComponent>
               </TouchableComponent>
             </View>
-          </Modal>
+          </Modal>)}
         </View>
       </TouchableComponent>
     );
