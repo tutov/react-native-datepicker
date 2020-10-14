@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/xgfe/react-native-datepicker#readme",
   "dependencies": {
-    "@react-native-community/datetimepicker": "2.4.3",
+   "@react-native-community/datetimepicker": "3.0.3",
     "moment": "^2.22.0"
   },
   "devDependencies": {
